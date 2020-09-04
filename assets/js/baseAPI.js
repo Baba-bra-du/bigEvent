@@ -12,15 +12,14 @@ $.ajaxPrefilter(function (options) {
         }
     }
 
-
     // 当请求结束后,判断用户的设置访问权限
     options.complete = function (res) {
         // 当用户身份认证失败后
-        if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败!') {
-            // 1.强制清空本地 token
-            localStorage.removeItem('token');
-            // 2.强制跳转到登录界面
-            location.href('/login.html');
+        if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
+            // 1. 强制清空 token
+            localStorage.removeItem('token')
+            // 2. 强制跳转到登录页面
+            location.href = '/login.html'
         }
     }
 })
